@@ -21,7 +21,7 @@ const db = new sqlite3.Database('hadith_db.db', err => {
 	}
 })
 
-app.get('/api/books', (req, res) => {
+app.get('/books', (req, res) => {
 	db.all('SELECT * FROM books', (err, rows) => {
 		if (err) {
 			console.error('Error executing SQL query:', err.message)
@@ -32,7 +32,7 @@ app.get('/api/books', (req, res) => {
 	})
 })
 
-app.get('/api/books/:id', (req, res) => {
+app.get('/books/:id', (req, res) => {
 	const booksId = req.params.id
 	db.get('SELECT * FROM books WHERE id = ?', [booksId], (err, row) => {
 		if (err) {
@@ -48,7 +48,7 @@ app.get('/api/books/:id', (req, res) => {
 	})
 })
 
-app.get('/api/chapter', (req, res) => {
+app.get('/chapter', (req, res) => {
 	db.all('SELECT * FROM chapter', (err, rows) => {
 		if (err) {
 			console.error('Error executing SQL query:', err.message)
@@ -59,7 +59,7 @@ app.get('/api/chapter', (req, res) => {
 	})
 })
 
-app.get('/api/chapter/:id', (req, res) => {
+app.get('/chapter/:id', (req, res) => {
 	const chapterId = req.params.id
 	db.get('SELECT * FROM chapter WHERE id = ?', [chapterId], (err, row) => {
 		if (err) {
@@ -75,7 +75,7 @@ app.get('/api/chapter/:id', (req, res) => {
 	})
 })
 
-app.get('/api/hadith', (req, res) => {
+app.get('/hadith', (req, res) => {
 	db.all('SELECT * FROM hadith', (err, rows) => {
 		if (err) {
 			console.error('Error executing SQL query:', err.message)
@@ -86,7 +86,7 @@ app.get('/api/hadith', (req, res) => {
 	})
 })
 
-app.get('/api/hadith/:id', (req, res) => {
+app.get('/hadith/:id', (req, res) => {
 	const bookId = req.params.id
 	db.all('SELECT * FROM hadith WHERE book_id = ?', [bookId], (err, rows) => {
 		if (err) {
@@ -98,7 +98,7 @@ app.get('/api/hadith/:id', (req, res) => {
 	})
 })
 
-app.get('/api/section', (req, res) => {
+app.get('/section', (req, res) => {
 	db.all('SELECT * FROM section', (err, rows) => {
 		if (err) {
 			console.error('Error executing SQL query:', err.message)
@@ -109,7 +109,7 @@ app.get('/api/section', (req, res) => {
 	})
 })
 
-app.get('/api/section/:book_id', (req, res) => {
+app.get('/section/:book_id', (req, res) => {
 	const bookId = req.params.book_id
 	db.all('SELECT * FROM section WHERE book_id = ?', [bookId], (err, rows) => {
 		if (err) {
