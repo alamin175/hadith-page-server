@@ -5,10 +5,12 @@ const cors = require('cors')
 const app = express()
 const PORT = process.env.PORT || 5000
 
+// app.use(cors())
+
 app.use(
 	cors({
-		origin: 'http://localhost:3000', // Your Next.js app's URL
-		credentials: true, // If your app sends cookies with requests
+		origin: 'https://hadis-page-client.vercel.app/',
+		credentials: true,
 	})
 )
 
