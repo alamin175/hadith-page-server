@@ -21,6 +21,10 @@ const db = new sqlite3.Database('hadith_db.db', err => {
 	}
 })
 
+app.get('/', (req, res) => {
+	res.send('All Hadis data are coming ')
+})
+
 app.get('/books', (req, res) => {
 	db.all('SELECT * FROM books', (err, rows) => {
 		if (err) {
